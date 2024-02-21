@@ -1,0 +1,15 @@
+version: '3.8'
+services:
+  web:
+    build: .
+    ports:
+      - "5000:5000"
+    environment:
+      - FLASK_APP=app/__init__.py
+      - FLASK_ENV=development
+    volumes:
+      - .:/app
+  mongo:
+    image: mongo
+    ports:
+      - "27017:27017"
