@@ -15,10 +15,8 @@ def forecast():
     
     data = get_weather_forecast(api_key, city, units)
 
-    # Filtra os dados antes de salvar no MongoDB e retornar
     filtered_data = filter_forecast_data(data, units)
     
-    # Salva a chamada no MongoDB
     weather_history.insert_one({"city": city, "forecasts": filtered_data})
     
     return jsonify_mongo(filtered_data)
